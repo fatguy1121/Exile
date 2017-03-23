@@ -9,8 +9,8 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-+private "_arr";
-+if (_this isEqualTo 0) exitWith {"0"};
-+_arr = toArray str abs (_this % 1);
-+_arr set [0, 32];
-+toString (toArray str (abs (_this - _this % 1) * _this / abs _this) + _arr - [32]) 
+private "_arr";
+if (_this isEqualTo 0) exitWith {"0"};
+_arr = toArray str abs (_this % 1);
+_arr set [0, 32];
+toString (toArray str (abs (_this - _this % 1) * _this / abs _this) + _arr - [32]) 
