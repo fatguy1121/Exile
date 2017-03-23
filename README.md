@@ -2,7 +2,7 @@
 1. Open your @ExileServer Folder and delete the following files : extDB2.dll , extDB2.so , extDB2-conf.ini , XM8.dll , XM8.so
 2. Download the git release of the Exdb3 Exile patch (https://github.com/BrettNordin/Exile) Press the clone/download button.
 3. Copy the Exile server file into the server directory
-4. Copy the exile mission folder contents into your mission file.
+4. Copy the exile mission folder CONTENTS INTO your mission file.
 5. open your config.cpp and do the following:
 
 In your config.cpp 
