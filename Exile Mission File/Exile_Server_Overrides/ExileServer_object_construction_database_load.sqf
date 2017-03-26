@@ -35,7 +35,7 @@ if !(_pinCode isEqualTo "000000") then
 	_constructionObject setVariable ["ExileAccessCode", _pinCode];
 	_constructionObject setVariable ["ExileIsLocked", (_data select 13), true];
 };
-if (typeOf _constructionObject in ["Exile_Construction_ConcreteDoor_Static", "Exile_Construction_ConcreteGate_Static", "Exile_Construction_WoodGate_Static", "Exile_Construction_WoodDoor_Static", "Exile_Construction_ConcreteWindowHatch_Static", "Exile_Construction_WoodGate_Reinforced_Static", "Exile_Construction_WoodDoor_Reinforced_Static", "Exile_Construction_ConcreteFloorHatch_Static"]) then
+if (typeOf _constructionObject in ["Exile_Construction_ConcreteDoor_Static", "Exile_Construction_ConcreteGate_Static", "Exile_Construction_WoodGate_Static", "Exile_Construction_WoodDoor_Static", "Exile_Construction_ConcreteWindowHatch_Static", "Exile_Construction_WoodGate_Reinforced_Static", "Exile_Construction_WoodDoor_Reinforced_Static", "Exile_Construction_ConcreteFloorHatch_Static","Exile_Item_BaseCameraKit"]) then
 {
 	_constructionObject enableDynamicSimulation true;
 };
