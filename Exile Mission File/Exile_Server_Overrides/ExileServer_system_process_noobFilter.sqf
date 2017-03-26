@@ -39,6 +39,7 @@ _weaponClassNames = [];
 forEach _arsenal;
 if ((count _weaponClassNames) > 0) then 
 {
+	"Exile Trader/Loottable Config Warning!" call ExileServer_util_log;
 	"You have weapons in your loot tables that spawn with attachments!" call ExileServer_util_log;
 	"This will allow duping and money farming!" call ExileServer_util_log;
 	"To solve this, please remove the following weapons from your loot tables and trader config OR replace them with their non-attachment equivalent:" call ExileServer_util_log;
