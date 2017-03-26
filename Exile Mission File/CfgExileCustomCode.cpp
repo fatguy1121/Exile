@@ -1,4 +1,5 @@
 ExileServer_system_database_connect = "Exile_Server_Overrides\ExileServer_system_database_connect.sqf";
+ExileServer_system_process_noobFilter = "Exile_Server_Overrides\ExileServer_system_process_noobFilter.sqf";
 ExileServer_world_initialize = "Exile_Server_Overrides\ExileServer_world_initialize.sqf";
 ExileServer_util_time_uptime = "Exile_Server_Overrides\ExileServer_util_time_uptime.sqf";
 ExileServer_util_time_currentTime = "Exile_Server_Overrides\ExileServer_util_time_currentTime.sqf";
