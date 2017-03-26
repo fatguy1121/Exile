@@ -51,6 +51,7 @@ catch
 		"Please have a look at @extDB3/logs/ to find out what went wrong." call ExileServer_util_log;
 		format ["MySQL Error: %1", _exception]  call ExileServer_util_log;
 		"Server will shutdown now :(" call ExileServer_util_log;
+		'#shutdown' call ExileServer_system_rcon_event_sendCommand;
 		//"extDB3" callExtension "9:SHUTDOWN"; Not implemented in extDB3
 	}
 	else
