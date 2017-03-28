@@ -12,7 +12,7 @@
 private["_constructionID","_data","_position","_vectorDirection","_vectorUp","_constructionObject","_damageLevel","_public","_pinCode"];
 _constructionID = _this;
 //LIST ANY OBJECT THAT NEEDS TO BE DYNAMICALY CREATED HERE!
-_DynamicObjects = ["Exile_Construction_ConcreteDoor_Static", "Exile_Construction_ConcreteGate_Static", "Exile_Construction_WoodGate_Static", "Exile_Construction_WoodDoor_Static", "Exile_Construction_ConcreteWindowHatch_Static", "Exile_Construction_WoodGate_Reinforced_Static", "Exile_Construction_WoodDoor_Reinforced_Static", "Exile_Construction_ConcreteFloorHatch_Static", "Exile_Item_BaseCamera_Static"];
+private _DynamicObjects = ["Exile_Construction_ConcreteDoor_Static", "Exile_Construction_ConcreteGate_Static", "Exile_Construction_WoodGate_Static", "Exile_Construction_WoodDoor_Static", "Exile_Construction_ConcreteWindowHatch_Static", "Exile_Construction_WoodGate_Reinforced_Static", "Exile_Construction_WoodDoor_Reinforced_Static", "Exile_Construction_ConcreteFloorHatch_Static"];
 //^^^
 _data = format ["loadConstruction:%1", _constructionID] call ExileServer_system_database_query_selectSingle;
 _position = [_data select 4, _data select 5, _data select 6];
@@ -38,7 +38,7 @@ if !(_pinCode isEqualTo "000000") then
 	_constructionObject setVariable ["ExileAccessCode", _pinCode];
 	_constructionObject setVariable ["ExileIsLocked", (_data select 13), true];
 };
-if (typeOf _constructionObject in _DynamicObjects) then
+if ((getNumber(configFile >> "CfgVehicles" >> (_data select 1) >> "exileRequiresSimulation") isEqualTo 1) || (typeOf _constructionObject in _DynamicObjects)) then
 {
 	_constructionObject enableDynamicSimulation true;
 };
