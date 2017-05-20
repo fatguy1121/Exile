@@ -1,4 +1,4 @@
-# Exile 64bit Edition How to install FOR EXILE 1.0.2
+# Exile 64bit Edition How to install FOR EXILE 1.0.3
 1. Open your @ExileServer Folder and delete the following files : extDB2.dll , extDB2.so , extDB2-conf.ini , XM8.dll , XM8.so
 2. Download the git release of the Exdb3 Exile patch (https://github.com/BrettNordin/Exile) Press the clone/download button.
 3. Copy the Exile server file into the server directory
