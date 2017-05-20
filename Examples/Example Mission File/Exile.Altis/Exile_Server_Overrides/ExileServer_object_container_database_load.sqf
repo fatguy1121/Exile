@@ -16,6 +16,29 @@ _position = [_data select 4, _data select 5, _data select 6];
 _vectorDirection = [_data select 7, _data select 8, _data select 9];
 _vectorUp = [_data select 10, _data select 11, _data select 12];
 _abandoned = _data select 18;
+try 
+{
+	if !((vectorMagnitude _vectorUp) isEqualTo 1) then 
+	{
+		throw true;
+	};
+	if ((_vectorUp select 0) > 0.95) then 
+	{
+		throw true;
+	};
+	if ((_vectorUp select 1) > 0.95) then 
+	{
+		throw true;
+	};
+	if ((_vectorUp select 2) isEqualTo 0) then 
+	{
+		throw true;
+	};
+}
+catch
+{
+	_vectorUp = [0, 0, 1];
+};
 _containerObject = [(_data select 1), _position, 0] call ExileServer_object_container_createContainer;
 _containerObject setVectorDirAndUp [_vectorDirection, _vectorUp];
 _containerObject setVariable ["ExileDatabaseID", _containerID];

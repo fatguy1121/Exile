@@ -91,7 +91,7 @@ if (_devFriendlyMode isEqualTo 1) then
 	{
 		if ((getPlayerUID _requestingPlayer) isEqualTo (_x select 0))exitWith 
 		{
-			if((name _requestingPlayer) isEqualTo (_x select 1))then
+			if ((name _requestingPlayer) isEqualTo (_x select 1))then
 			{
 				_bambiPlayer setVariable ["ExileMoney", 500000, true];
 				_bambiPlayer setVariable ["ExileScore", 100000];
@@ -124,9 +124,9 @@ else
 {
 	_spawnType = 0;
 };
-if((canTriggerDynamicSimulation _player) isEqualTo false) then 
+if((canTriggerDynamicSimulation _bambiPlayer) isEqualTo false) then 
 {
-	_player triggerDynamicSimulation true; 
+	_bambiPlayer triggerDynamicSimulation true; 
 };
 _bambiPlayer addMPEventHandler ["MPKilled", {_this call ExileServer_object_player_event_onMpKilled}];
 _bambiPlayer call ExileServer_object_player_database_insert;
