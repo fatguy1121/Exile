@@ -75,12 +75,12 @@ if (_devFriendlyMode isEqualTo 1) then
 {
 	_devs = getArray (configFile >> "CfgSettings" >> "ServerSettings" >> "devs");
 	{
-		if ((getPlayerUID _requestingPlayer) isEqualTo (_x select 0))exitWith 
+		if (_playerUID isEqualTo (_x select 0)) exitWith 
 		{
-			if((name _requestingPlayer) isEqualTo (_x select 1))then
+			if (_name isEqualTo (_x select 1)) then
 			{
-				_bambiPlayer setVariable ["ExileMoney", 500000, true];
-				_bambiPlayer setVariable ["ExileScore", 100000];
+				_player setVariable ["ExileMoney", 500000, true];
+				_player setVariable ["ExileScore", 100000];
 			};
 		};
 	}
