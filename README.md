@@ -1,4 +1,5 @@
 # Exile 64bit Edition How to install FOR EXILE 1.0.3
+Before you begin: If you are running a dedicated Exile Server ON WINDOWS, and have full rdp access, Read the #automated install section of this readme
 1. Open your @ExileServer Folder and delete the following files : extDB2.dll , extDB2.so , extDB2-conf.ini , XM8.dll , XM8.so
 2. Download the git release of the Exdb3 Exile patch (https://github.com/BrettNordin/Exile) Press the clone/download button.
 3. Copy the Exile server file into the server directory
@@ -27,4 +28,25 @@ class CfgExileCustomCode
 11. Run the Mysql Querys in the "Exile_Database_Update_64x.sql" file to properly update your database.
 12. Boot up your server and see if it works. If it does not work then go to your logs folder and find the error code and leave a message here and I'll get to you.
 
-If you run into trouble you can look in the Examples folder and see what the mission file should look like with just the overrides installed. 
+#Automated Installer (Still in Testing)
+You can download this git and copy all the files into the ROOT server folder, then run install.bat. Once you have finished going through the installation you may now follow the steps below:
+1. Open your @ExileServer Folder and delete the following files : extDB2.dll , extDB2.so , extDB2-conf.ini , XM8.dll , XM8.so
+2. Copy the exile mission folder CONTENTS INTO your mission file.
+3. open your config.cpp and do the following:
+
+In your config.cpp 
+Add: #include "CfgExileCustomCode.cpp" 
+Into:
+class CfgExileCustomCode 
+{
+};
+
+It will look like this in the end: 
+class CfgExileCustomCode 
+{
+    #include "CfgExileCustomCode.cpp" 
+};
+4. Exit the Exile.ini file to match any changes in your older exile.ini
+ SIDENOTE: the new exile.ini no longer contains the lines with "Number of Inputs = #" (# is refering to any number within the file on this line)
+5. Run the Mysql Querys in the "Exile_Database_Update_64x.sql" file to properly update your database.
+6. Boot up your server and see if it works. If it does not work then go to your logs folder and find the error code and leave a message here and I'll get to you.
