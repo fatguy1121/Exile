@@ -28,7 +28,7 @@ class CfgExileCustomCode
 11. Run the Mysql Querys in the "Exile_Database_Update_64x.sql" file to properly update your database.
 12. Boot up your server and see if it works. If it does not work then go to your logs folder and find the error code and leave a message here and I'll get to you.
 
-#Automated Installer (Still in Testing)
+# Automated Installer (Still in Testing)
 You can download this git and copy all the files into the ROOT server folder, then run install.bat. Once you have finished going through the installation you may now follow the steps below:
 1. Open your @ExileServer Folder and delete the following files : extDB2.dll , extDB2.so , extDB2-conf.ini , XM8.dll , XM8.so
 2. Copy the exile mission folder CONTENTS INTO your mission file.
