@@ -124,10 +124,6 @@ else
 {
 	_spawnType = 0;
 };
-if((canTriggerDynamicSimulation _bambiPlayer) isEqualTo false) then 
-{
-	_bambiPlayer triggerDynamicSimulation true; 
-};
 _bambiPlayer addMPEventHandler ["MPKilled", {_this call ExileServer_object_player_event_onMpKilled}];
 _bambiPlayer call ExileServer_object_player_database_insert;
 _bambiPlayer call ExileServer_object_player_database_update;
