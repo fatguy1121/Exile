@@ -27,3 +27,5 @@ class CfgExileCustomCode
  SIDENOTE: the new exile.ini no longer contains the lines with "Number of Inputs = #" (# is refering to any number within the file on this line)
 11. Run the Mysql Querys in the "Exile_Database_Update_64x.sql" file to properly update your database.
 12. Boot up your server and see if it works. If it does not work then go to your logs folder and find the error code and leave a message here and I'll get to you.
+
+## Go to https://github.com/BrettNordin/Exile/wiki/Common-Errors---Issues for help with most issues.
