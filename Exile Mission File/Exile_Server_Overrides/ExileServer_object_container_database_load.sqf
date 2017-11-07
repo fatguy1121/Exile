@@ -63,6 +63,7 @@ if !(_abandoned isEqualTo "") then
 	format ["ExileServer - Adding Container %1 to Abandonded Safes", _containerID] call ExileClient_util_log;
 	ExileAbandondedSafes pushBack _containerObject;
 };
+_containerObject enableSimulationGlobal false;
 _containerObject enableDynamicSimulation true;
 _containerObject addMPEventHandler ["MPKilled", { if !(isServer) exitWith {}; (_this select 0) call ExileServer_object_container_event_onMpKilled; }];
 _containerObject

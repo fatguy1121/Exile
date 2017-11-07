@@ -35,5 +35,11 @@ _extDB2Message = ["insertConstruction", _data] call ExileServer_util_extDB2_crea
 _constructionID = _extDB2Message call ExileServer_system_database_query_insertSingle;
 _constructionObject setVariable ["ExileDatabaseID", _constructionID];
 _constructionObject setVariable ["ExileTerritoryID", _territoryID];
-_constructionObject enableDynamicSimulation true;
+
+_constructionObject enableSimulationGlobal false;
+if (getNumber(configFile >> "CfgVehicles" >> (typeOf _constructionObject) >> "exileRequiresSimulation") isEqualTo 1) then
+{
+	_constructionObject enableDynamicSimulation true;
+};
+
 _constructionID

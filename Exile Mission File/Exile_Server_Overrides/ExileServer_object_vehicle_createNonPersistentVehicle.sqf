@@ -18,5 +18,6 @@ _vehicleObject = [_className, _position, _direction, _usePositionATL] call Exile
 _vehicleObject setVariable ["ExileIsPersistent", false];
 _vehicleObject addEventHandler ["GetIn", {_this call ExileServer_object_vehicle_event_onGetIn}];
 _vehicleObject addMPEventHandler ["MPKilled", { if !(isServer) exitWith {}; _this call ExileServer_object_vehicle_event_onMPKilled;}];
+_vehicleObject enableSimulationGlobal false;
 _vehicleObject enableDynamicSimulation true;
 _vehicleObject

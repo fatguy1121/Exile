@@ -97,6 +97,7 @@ if !(_texture isEqualTo "") then
 	}
 	forEach _texture;
 };
+_vehicleObject enableSimulationGlobal false;
 _vehicleObject enableDynamicSimulation true;
 if (_vehicleObject call ExileClient_util_world_isInTraderZone) then 
 {

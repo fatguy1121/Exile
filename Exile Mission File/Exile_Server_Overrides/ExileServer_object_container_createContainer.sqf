@@ -26,5 +26,6 @@ if(getNumber(configFile >> "CfgVehicles" >> typeOf _containerObject >> "exileIsL
 {
 	_containerObject setVariable ["ExileIsLocked", -1,true];
 };
+_containerObject enableSimulationGlobal false;
 _containerObject enableDynamicSimulation true;
 _containerObject

@@ -38,6 +38,8 @@ if !(_pinCode isEqualTo "000000") then
 	_constructionObject setVariable ["ExileAccessCode", _pinCode];
 	_constructionObject setVariable ["ExileIsLocked", (_data select 13), true];
 };
+
+_constructionObject enableSimulationGlobal false;
 if ((getNumber(configFile >> "CfgVehicles" >> (_data select 1) >> "exileRequiresSimulation") isEqualTo 1) || (typeOf _constructionObject in _DynamicObjects)) then
 {
 	_constructionObject enableDynamicSimulation true;

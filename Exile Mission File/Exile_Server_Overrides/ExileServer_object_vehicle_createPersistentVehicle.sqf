@@ -21,5 +21,6 @@ _vehicleObject setVariable ["ExileAccessCode", _pinCode];
 _vehicleObject addEventHandler ["GetOut", {_this call ExileServer_object_vehicle_event_onGetOut}];
 _vehicleObject addEventHandler ["GetIn", {_this call ExileServer_object_vehicle_event_onGetIn}];
 _vehicleObject addMPEventHandler ["MPKilled", { if !(isServer) exitWith {}; _this call ExileServer_object_vehicle_event_onMPKilled;}];
+_vehicleObject enableSimulationGlobal false;
 _vehicleObject enableDynamicSimulation true;
 _vehicleObject
