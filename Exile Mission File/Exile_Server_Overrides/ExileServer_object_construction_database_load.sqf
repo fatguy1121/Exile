@@ -12,7 +12,7 @@
 private["_constructionID","_data","_position","_vectorDirection","_vectorUp","_constructionObject","_damageLevel","_public","_pinCode"];
 _constructionID = _this;
 //LIST ANY OBJECT THAT NEEDS TO BE DYNAMICALY CREATED HERE!
-private _DynamicObjects = ["Exile_Construction_ConcreteDoor_Static", "Exile_Construction_ConcreteGate_Static", "Exile_Construction_WoodGate_Static", "Exile_Construction_WoodDoor_Static", "Exile_Construction_ConcreteWindowHatch_Static", "Exile_Construction_WoodGate_Reinforced_Static", "Exile_Construction_WoodDoor_Reinforced_Static", "Exile_Construction_ConcreteFloorHatch_Static"];
+private _DynamicObjects = ["Exile_Construction_ConcreteDoor_Static", "Exile_Construction_ConcreteGate_Static", "Exile_Construction_WoodGate_Static", "Exile_Construction_WoodDoor_Static", "Exile_Construction_ConcreteWindowHatch_Static", "Exile_Construction_WoodGate_Reinforced_Static", "Exile_Construction_WoodDoor_Reinforced_Static", "Exile_Construction_ConcreteFloorHatch_Static","Exile_Construction_WoodDrawBridge_Static","Exile_Construction_WoodDrawBridge_Reinforced_Static"];
 //^^^
 _data = format ["loadConstruction:%1", _constructionID] call ExileServer_system_database_query_selectSingle;
 _position = [_data select 4, _data select 5, _data select 6];
