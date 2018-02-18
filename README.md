@@ -2,7 +2,7 @@
 1. Windows 32Bit, 64Bit
 2. Linux 32Bit
 
-# Exile 64bit Edition How to install FOR EXILE 1.0.3
+# Exile 64bit Edition How to install FOR EXILE 1.0.4
 ## Please include both your server RPT and Extdb3 Logs when submitting an issue on the forums, USING PASTEBIN.
 1. Open your @ExileServer Folder and delete the following files : extDB2.dll , extDB2.so , extDB2-conf.ini , XM8.dll , XM8.so
 2. Download the git release of the Exdb3 Exile patch (https://github.com/BrettNordin/Exile) Press the clone/download button.
