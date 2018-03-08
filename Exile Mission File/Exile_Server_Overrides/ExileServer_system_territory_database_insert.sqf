@@ -31,7 +31,7 @@ _data =
 	0,
 	_build_rights,
 	_moderators,
-	""
+	"Null"
 ];
 _extDB2Message = ["createTerritory", _data] call ExileServer_util_extDB2_createMessage;
 _territoryID = _extDB2Message call ExileServer_system_database_query_insertSingle;

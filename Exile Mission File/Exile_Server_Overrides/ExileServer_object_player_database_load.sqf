@@ -221,13 +221,17 @@ if !(_assignedItems isEqualTo []) then
 	forEach _assignedItems;
 };
 _player addMPEventHandler ["MPKilled", {_this call ExileServer_object_player_event_onMpKilled}];
-if((canTriggerDynamicSimulation _player) isEqualTo false) then 
-{
-	_player triggerDynamicSimulation true; 
-};
 if (getNumber (configFile >> "CfgSettings" >> "VehicleSpawn" >> "thermalVision") isEqualTo 0) then 
 {
 	_player addEventHandler ["WeaponAssembled", {(_this select 1) disableTIEquipment true;}];
+};
+if (getNumber(missionConfigFile >> "CfgSimulation" >> "enableDynamicSimulation") isEqualTo 1) then 
+{
+	if ((canTriggerDynamicSimulation _player) isEqualTo false) then
+	{
+		_player triggerDynamicSimulation true;
+	  	_player enableDynamicSimulation true;
+	};
 };
 [
 	_sessionID, 

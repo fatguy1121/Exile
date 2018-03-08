@@ -98,7 +98,14 @@ if !(_texture isEqualTo "") then
 	forEach _texture;
 };
 _vehicleObject enableSimulationGlobal false;
-_vehicleObject enableDynamicSimulation true;
+if (getNumber(missionConfigFile >> "CfgSimulation" >> "enableDynamicSimulation") isEqualTo 1) then 
+{
+	_vehicleObject enableDynamicSimulation true;
+}
+else
+{
+	_vehicleObject call ExileServer_system_simulationMonitor_addVehicle;
+};
 if (_vehicleObject call ExileClient_util_world_isInTraderZone) then 
 {
 	_vehicleObject allowDamage false;

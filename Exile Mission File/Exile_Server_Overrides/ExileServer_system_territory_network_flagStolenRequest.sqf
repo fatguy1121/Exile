@@ -29,7 +29,7 @@ try
 		throw "You are too far away!";
 	};
 	_databaseID = _flag getVariable ["ExileDatabaseID",0];
-	_level = _flag getVariable ["ExileTerritoryLevel",_level];
+	_level = _flag getVariable ["ExileTerritoryLevel",0];
 	_flagPosition = getPosATL _flag;
 	_flagPosition set[2, 0];
 	_spawnRadius = 3;

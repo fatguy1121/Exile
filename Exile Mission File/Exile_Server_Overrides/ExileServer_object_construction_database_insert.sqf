@@ -15,7 +15,7 @@ _position = getPosATL _constructionObject;
 _vectorDirection = vectorDir _constructionObject;
 _vectorUp = vectorUp _constructionObject;
 _territoryFlag = _constructionObject call ExileClient_util_world_getTerritoryAtPosition;
-_territoryID = if (isNull _territoryFlag) then { '' } else  { _territoryFlag getVariable ["ExileDatabaseID", '']};
+_territoryID = if (isNull _territoryFlag) then { 'NULL' } else  { _territoryFlag getVariable ["ExileDatabaseID", 'NULL']};
 _data =
 [
 	typeOf _constructionObject,
@@ -35,11 +35,5 @@ _extDB2Message = ["insertConstruction", _data] call ExileServer_util_extDB2_crea
 _constructionID = _extDB2Message call ExileServer_system_database_query_insertSingle;
 _constructionObject setVariable ["ExileDatabaseID", _constructionID];
 _constructionObject setVariable ["ExileTerritoryID", _territoryID];
-
-_constructionObject enableSimulationGlobal false;
-if (getNumber(configFile >> "CfgVehicles" >> (typeOf _constructionObject) >> "exileRequiresSimulation") isEqualTo 1) then
-{
-	_constructionObject enableDynamicSimulation true;
-};
 
 _constructionID

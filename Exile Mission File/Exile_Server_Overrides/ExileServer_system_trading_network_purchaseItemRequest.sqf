@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_sessionID","_parameters","_itemClassName","_quantity","_containerType","_containerNetID","_playerObject","_vehicleObject","_salesPrice","_playerMoney","_playerRespect","_quality","_requiredRespect","_logging","_traderLog","_responseCode"];
+private["_sessionID", "_parameters", "_itemClassName", "_quantity", "_containerType", "_containerNetID", "_playerObject", "_vehicleObject", "_salesPrice", "_playerMoney", "_playerRespect", "_quality", "_requiredRespect", "_logging", "_traderLog", "_responseCode"];
 _sessionID = _this select 0;
 _parameters = _this select 1;
 _itemClassName = _parameters select 0;
@@ -29,6 +29,14 @@ try
 	{
 		throw 1;
 	};
+	if (_containerType isEqualTo 5) then 
+	{
+		_vehicleObject = objectFromNetID(_containerNetID);
+		if (isNull _vehicleObject) then 
+		{
+			throw 6;
+		};
+	};
 	if !(alive _playerObject) then
 	{
 		throw 2;
@@ -38,14 +46,24 @@ try
 		throw 3;
 	};
 	_salesPrice = getNumber (missionConfigFile >> "CfgExileArsenal" >> _itemClassName >> "price");
-	if (_salesPrice <= 0) then
+	if (getNumber(configFile >> "CfgSettings" >> "Escape" >> "enableEscape") isEqualTo 1) then 
 	{
-		throw 4;
-	};
-	_playerMoney = _playerObject getVariable ["ExileMoney", 0];
-	if (_playerMoney < _salesPrice) then
+		if (_salesPrice < 0) then
+		{
+			throw 4;
+		};
+	}
+	else
 	{
-		throw 5;
+		if (_salesPrice <= 0) then
+		{
+			throw 4;
+		};
+		_playerMoney = _playerObject getVariable ["ExileMoney", 0];
+		if (_playerMoney < _salesPrice) then
+		{
+			throw 5;
+		};
 	};
 	_playerRespect = _playerObject getVariable ["ExileScore", 0];
 	_quality = getNumber(missionConfigFile >> "CfgExileArsenal" >> _itemClassName >> "quality");
@@ -54,9 +72,12 @@ try
 	{
 		throw 14;
 	};
-	_playerMoney = _playerMoney - _salesPrice;
-	_playerObject setVariable ["ExileMoney", _playerMoney, true];
-	format["setPlayerMoney:%1:%2", _playerMoney, _playerObject getVariable ["ExileDatabaseID", 0]] call ExileServer_system_database_query_fireAndForget;
+	if !(getNumber(configFile >> "CfgSettings" >> "Escape" >> "enableEscape") isEqualTo 1) then 
+	{
+		_playerMoney = _playerMoney - _salesPrice;
+		_playerObject setVariable ["ExileMoney", _playerMoney, true];
+		format["setPlayerMoney:%1:%2", _playerMoney, _playerObject getVariable ["ExileDatabaseID", 0]] call ExileServer_system_database_query_fireAndForget;
+	};
 	[_sessionID, "purchaseItemResponse", [0, _salesPrice, _itemClassName, 1, _containerType, _containerNetID]] call ExileServer_system_network_send_to;
 	_logging = getNumber(configFile >> "CfgSettings" >> "Logging" >> "traderLogging");
 	if (_logging isEqualTo 1) then

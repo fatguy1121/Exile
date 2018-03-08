@@ -17,7 +17,12 @@ _usePositionATL = _this select 3;
 _vehicleObject = [_className, _position, _direction, _usePositionATL] call ExileServer_object_vehicle_carefulCreateVehicle;
 _vehicleObject setVariable ["ExileIsPersistent", false];
 _vehicleObject addEventHandler ["GetIn", {_this call ExileServer_object_vehicle_event_onGetIn}];
-_vehicleObject addMPEventHandler ["MPKilled", { if !(isServer) exitWith {}; _this call ExileServer_object_vehicle_event_onMPKilled;}];
-_vehicleObject enableSimulationGlobal false;
-_vehicleObject enableDynamicSimulation true;
+_vehicleObject addMPEventHandler ["MPKilled", { if !(isServer) exitWith {}; _this call ExileServer_object_vehicle_event_onMPKilled;}];if (getNumber(missionConfigFile >> "CfgSimulation" >> "enableDynamicSimulation") isEqualTo 1) then 
+{
+	_vehicleObject enableDynamicSimulation true;
+}
+else
+{
+	_vehicleObject call ExileServer_system_simulationMonitor_addVehicle;
+};
 _vehicleObject

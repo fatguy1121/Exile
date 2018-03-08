@@ -34,7 +34,7 @@ try
 	{
 		throw "No upgrade Access!";
 	};
-	_level = _flag getVariable ["ExileTerritoryLevel",_level];
+	_level = _flag getVariable ["ExileTerritoryLevel",0];
 	_territoryConfig = getArray(missionConfigFile >> "CfgTerritories" >> "Prices");
 	_territoryLevels = count _territoryConfig;
 	if (_territoryLevels < (_level + 1)) then
