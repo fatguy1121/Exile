@@ -10,5 +10,17 @@
  */
  
 ExileSimulationMonitoredVehicles = [];
-//[2, ExileServer_system_simulationMonitor_thread_toggleSimulation, [], true] call ExileServer_system_thread_addTask;
+if (getNumber(missionConfigFile >> "CfgSimulation" >> "enableDynamicSimulation") isEqualTo 1) then 
+{
+	enableDynamicSimulationSystem true;
+	"Group" setDynamicSimulationDistance (getNumber(missionConfigFile >> "CfgSimulation" >> "groupSimulationDistance"));
+	"Vehicle" setDynamicSimulationDistance (getNumber(missionConfigFile >> "CfgSimulation" >> "vehicleSimulationDistance"));
+	"EmptyVehicle" setDynamicSimulationDistance (getNumber(missionConfigFile >> "CfgSimulation" >> "emptyVehicleSimulationDistance"));
+	"Prop" setDynamicSimulationDistance (getNumber(missionConfigFile >> "CfgSimulation" >> "propSimulationDistance"));
+	"IsMoving" setDynamicSimulationDistanceCoef (getNumber(missionConfigFile >> "CfgSimulation" >> "isMovingSimulationCoef"));
+}
+else
+{
+	[20, ExileServer_system_simulationMonitor_thread_toggleSimulation, [], true] call ExileServer_system_thread_addTask;
+};
 true

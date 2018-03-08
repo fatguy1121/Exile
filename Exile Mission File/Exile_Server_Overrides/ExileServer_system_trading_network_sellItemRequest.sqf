@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_sessionID","_parameters","_itemClassName","_quantity","_containerType","_containerNetID","_playerObject","_vehicleObject","_sellPrice","_playerMoney","_noRespectItems","_playerRespect","_respectGain","_logging","_playerMoneyString","_traderLog","_responseCode"];
+private["_sessionID", "_parameters", "_itemClassName", "_quantity", "_containerType", "_containerNetID", "_playerObject", "_vehicleObject", "_sellPrice", "_playerRespect", "_playerMoney", "_noRespectItems", "_respectGain", "_logging", "_playerMoneyString", "_traderLog", "_responseCode"];
 _sessionID = _this select 0;
 _parameters = _this select 1;
 _itemClassName = _parameters select 0;
@@ -75,34 +75,37 @@ try
 			];
 		};
 	};
-	if (_sellPrice <= 0) then
-	{
-		throw 4;
-	};
-	_playerMoney = _playerObject getVariable ["ExileMoney", 0];
-	_playerMoney = _playerMoney + _sellPrice;
-	_playerObject setVariable ["ExileMoney", _playerMoney, true];
-	format["setPlayerMoney:%1:%2", _playerMoney, _playerObject getVariable ["ExileDatabaseID", 0]] call ExileServer_system_database_query_fireAndForget;
-	_noRespectItems = 
-	[
-		"Exile_Item_FlagStolen1",
-		"Exile_Item_FlagStolen2",
-		"Exile_Item_FlagStolen3",
-		"Exile_Item_FlagStolen4",
-		"Exile_Item_FlagStolen5",
-		"Exile_Item_FlagStolen6",
-		"Exile_Item_FlagStolen7",
-		"Exile_Item_FlagStolen8",
-		"Exile_Item_FlagStolen9",
-		"Exile_Item_FlagStolen10"
-	];
 	_playerRespect = _playerObject getVariable ["ExileScore", 0];
-	if !(_itemClassName in _noRespectItems) then 
+	if !(getNumber(configFile >> "CfgSettings" >> "Escape" >> "enableEscape") isEqualTo 1) then 
 	{
-		_respectGain = _sellPrice * getNumber (configFile >> "CfgSettings" >> "Respect" >> "tradingRespectFactor");
-		_playerRespect = floor (_playerRespect + _respectGain);
-		_playerObject setVariable ["ExileScore", _playerRespect];
-		format["setAccountScore:%1:%2", _playerRespect, (getPlayerUID _playerObject)] call ExileServer_system_database_query_fireAndForget;
+		if (_sellPrice <= 0) then
+		{
+			throw 4;
+		};
+		_playerMoney = _playerObject getVariable ["ExileMoney", 0];
+		_playerMoney = _playerMoney + _sellPrice;
+		_playerObject setVariable ["ExileMoney", _playerMoney, true];
+		format["setPlayerMoney:%1:%2", _playerMoney, _playerObject getVariable ["ExileDatabaseID", 0]] call ExileServer_system_database_query_fireAndForget;
+		_noRespectItems = 
+		[
+			"Exile_Item_FlagStolen1",
+			"Exile_Item_FlagStolen2",
+			"Exile_Item_FlagStolen3",
+			"Exile_Item_FlagStolen4",
+			"Exile_Item_FlagStolen5",
+			"Exile_Item_FlagStolen6",
+			"Exile_Item_FlagStolen7",
+			"Exile_Item_FlagStolen8",
+			"Exile_Item_FlagStolen9",
+			"Exile_Item_FlagStolen10"
+		];
+		if !(_itemClassName in _noRespectItems) then 
+		{
+			_respectGain = _sellPrice * getNumber (configFile >> "CfgSettings" >> "Respect" >> "tradingRespectFactor");
+			_playerRespect = floor (_playerRespect + _respectGain);
+			_playerObject setVariable ["ExileScore", _playerRespect];
+			format["setAccountScore:%1:%2", _playerRespect, (getPlayerUID _playerObject)] call ExileServer_system_database_query_fireAndForget;
+		};
 	};
 	[_sessionID, "sellItemResponse", [0, _sellPrice, _itemClassName, 1, _containerType, _containerNetID, str _playerRespect]] call ExileServer_system_network_send_to;
 	_logging = getNumber(configFile >> "CfgSettings" >> "Logging" >> "traderLogging");
