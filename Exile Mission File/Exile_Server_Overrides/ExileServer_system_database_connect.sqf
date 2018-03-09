@@ -36,6 +36,7 @@ if ((_result select 0) isEqualTo 0) then
 };
 	ExileServerStartTime = (call compile ("extDB3" callExtension "9:LOCAL_TIME")) select 1;
 	"Database protocol initialized!" call ExileServer_util_log;
+  "You are running Extdb3, If you run into issues please post on the forum under the extdb3 conversion." call ExileServer_util_log;
 	"extDB3" callExtension "9:ADD_PROTOCOL:LOG:TRADING:Exile_TradingLog";
 	"extDB3" callExtension "9:ADD_PROTOCOL:LOG:DEATH:Exile_DeathLog";
 	"extDB3" callExtension "9:ADD_PROTOCOL:LOG:TERRITORY:Exile_TerritoryLog";
