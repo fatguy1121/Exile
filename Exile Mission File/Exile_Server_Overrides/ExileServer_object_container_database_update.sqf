@@ -8,7 +8,7 @@
  * This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
- 
+
 private["_containerObject","_containerID","_position","_vectorDirection","_vectorUp","_territoryFlag","_territoryID","_data","_extDB2Message"];
 _containerObject= _this;
 _containerID = _containerObject getVariable ["ExileDatabaseID", -1];
@@ -36,9 +36,9 @@ if (_containerID > -1) then
 		magazinesAmmoCargo _containerObject,
 		weaponsItemsCargo _containerObject,
 		_containerObject call ExileServer_util_getObjectContainerCargo,
-		_containerObject getVariable ["ExileMoney", 0],
-		_containerID,
-		_territoryID
+		_territoryID,
+    _containerObject getVariable ["ExileMoney", 0],
+    _containerID
 	];
 	_extDB2Message = ["updateContainer", _data] call ExileServer_util_extDB2_createMessage;
 	_extDB2Message call ExileServer_system_database_query_fireAndForget;
