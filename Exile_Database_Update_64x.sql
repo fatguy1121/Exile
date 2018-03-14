@@ -22,3 +22,17 @@ CHANGE COLUMN `score` `score` INT(50) NOT NULL DEFAULT '0' ,
 CHANGE COLUMN `locker` `locker` INT(50) NOT NULL DEFAULT '0' ;
 ALTER TABLE `player` 
 CHANGE COLUMN `money` `money` INT(50) UNSIGNED NOT NULL DEFAULT '0' ;
+ALTER TABLE `container` 
+DROP FOREIGN KEY `container_ibfk_2`;
+ALTER TABLE  `container` 
+DROP INDEX `territory_id` ;
+ALTER TABLE `construction` 
+DROP FOREIGN KEY `construction_ibfk_2`;
+ALTER TABLE `construction` 
+DROP INDEX `territory_id` ;
+ALTER TABLE `territory` 
+DROP FOREIGN KEY `territory_ibfk_2`;
+ALTER TABLE `territory` 
+DROP INDEX `flag_stolen_by_uid` ;
+ALTER TABLE `vehicle` DROP FOREIGN KEY `vehicle_ibfk_2`;
+ALTER TABLE `vehicle` DROP INDEX `vehicle_ibfk_2_idx` ;
