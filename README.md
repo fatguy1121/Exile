@@ -4,6 +4,7 @@
 
 # Exile 64bit Edition How to install FOR EXILE 1.0.4
 ## Please include both your server RPT and Extdb3 Logs when submitting an issue on the forums, USING PASTEBIN.
+### Also Note--- We require the use OF ALL overrides I provided, without them I CANNOT provide support
 1. Open your @ExileServer Folder and delete the following files : extDB2.dll , extDB2.so , extDB2-conf.ini , XM8.dll , XM8.so
 2. Download the git release of the Exdb3 Exile patch (https://github.com/BrettNordin/Exile) Press the clone/download button.
 3. Copy the Exile server file into the server directory
@@ -18,10 +19,15 @@ class CfgExileCustomCode
 };
 
 It will look like this in the end: 
-class CfgExileCustomCode 
-{
-    #include "CfgExileCustomCode.cpp" 
-};
+
+    class CfgExileCustomCode 
+    {
+
+        #include "CfgExileCustomCode.cpp" 
+    
+    };
+
+
 
 6. Go to Torndeco's download center and download the latest version of extDB3. (https://bitbucket.org/torndeco/extdb3/downloads/)
 7. Copy the TWO tbbmalloc.dll's (tbbmalloc.dll, tbbmalloc_x64.dll) to your server ROOT directory
