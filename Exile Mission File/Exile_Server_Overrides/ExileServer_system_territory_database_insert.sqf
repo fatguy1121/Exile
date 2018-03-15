@@ -29,7 +29,6 @@ _data =
 	1,
 	_flagTexture,
 	0,
-	"Null",
 	_build_rights,
 	_moderators
 ];
